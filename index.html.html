@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Bub 💖</title>
+  
+  <style>
+    /* ========================================= */
+    /* CSS ASLI DARI PENGGUNA                    */
+    /* ========================================= */
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@400;500;600&display=swap');
+
+    :root {
+      --paper: #f5eee3;
+      --paper-deep: #e9ddcc;
+      --ink: #49372f;
+      --muted: #826c5c;
+      --rose: #a95f62;
+      --rose-light: #ead0cb;
+      --line: #d9c8b5;
+      --white: #fffaf3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+    body.locked { overflow: hidden; }
+    .grain { pointer-events: none; position: fixed; inset: 0; z-index: 20; opacity: .10; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); }
+    .topline, footer { display: flex; justify-content: space-between; align-items: center; padding: 17px clamp(20px, 5vw, 72px); font-size: 9px; letter-spacing: .18em; color: var(--muted); }
+    .tiny-heart { color: var(--rose); font-size: 14px; }
+    .page-section { padding: 100px 24px; }
+    .hero { min-height: 85vh; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-top: 80px; padding-bottom: 100px; overflow: hidden; }
+    .hero > * { position: relative; z-index: 1; }
+    .eyebrow { font-size: 9px; line-height: 1.6; letter-spacing: .22em; font-weight: 700; color: var(--rose); text-transform: uppercase; margin: 0 0 18px; }
+    h1, h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; letter-spacing: -.04em; }
+    h1 { font-size: clamp(48px, 9vw, 94px); line-height: .99; margin: 8px 0 25px; }
+    h1 em, h2 em { color: var(--rose); font-weight: 400; }
+    .hero-copy { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(16px, 2.5vw, 20px); line-height: 1.65; color: var(--muted); margin: 0 0 30px; }
+    .primary-button { border: 0; background: var(--ink); color: var(--white); border-radius: 2px; padding: 16px 23px; font: 500 12px 'DM Sans', sans-serif; letter-spacing: .02em; cursor: pointer; box-shadow: 5px 5px 0 var(--rose-light); transition: transform .2s, box-shadow .2s; text-decoration: none; display: inline-block; }
+    .primary-button:hover { transform: translate(2px,2px); box-shadow: 3px 3px 0 var(--rose-light); }
+    .primary-button span { margin-left: 15px; color: #e5c3b9; }
+    .small-note { font: 18px 'Caveat', cursive; color: var(--muted); margin-top: 20px; }
+    .hero-stamp { position: absolute; bottom: 12%; right: max(7%, calc((100% - 800px)/2)); width: 75px; height: 75px; border: 1px solid var(--rose); color: var(--rose); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; font-size: 8px; letter-spacing: .12em; transform: rotate(12deg); background: var(--paper); }
+    .hero-stamp strong { font-size: 15px; font-weight: 500; }
+    .intro { background: var(--paper-deep); text-align: center; padding-top: 90px; padding-bottom: 95px; }
+    .intro h2, .section-heading h2, .wishes h2, .finale h2 { font-size: clamp(38px, 6vw, 62px); line-height: 1.05; margin: 0 0 22px; }
+    .body-copy { max-width: 560px; margin: 0 auto; color: #796657; line-height: 1.9; font-size: 14px; }
+    .handwritten { font: 24px 'Caveat', cursive; color: var(--rose); margin-top: 28px; }
+    .memories { max-width: 1080px; margin: auto; }
+    .section-heading { text-align: center; margin-bottom: 54px; }
+    .photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 28px 24px; align-items: start; }
+    .polaroid { margin: 0; background: #fffaf4; padding: 10px 10px 15px; box-shadow: 0 7px 18px #6c4c3010; border: 1px solid #eee2d3; transition: transform .25s, box-shadow .25s; }
+    .polaroid:hover { transform: translateY(-5px) rotate(0deg) !important; box-shadow: 0 13px 25px #6c4c3020; z-index: 10; position: relative; }
+    .tilt-left { transform: rotate(-2deg); }
+    .tilt-right { transform: rotate(2deg); }
+    .photo-frame { aspect-ratio: 4/4.7; background: #e9ddce; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px; justify-content: center; align-items: center; text-align: center; color: #a28a76; font: 16px 'Caveat', cursive; background: repeating-linear-gradient(135deg, #eee3d5, #eee3d5 8px, #e9ddce 8px, #e9ddce 16px); }
+    .photo-placeholder b { font: 30px 'Playfair Display', serif; color: #b59a82; }
+    .photo-frame:not(.placeholder) .photo-placeholder { display: none; }
+    figcaption { display: flex; gap: 9px; align-items: baseline; margin-top: 12px; font: 17px 'Caveat', cursive; color: #705c4e; min-height: 22px; }
+    .photo-number { font: 8px 'DM Sans', sans-serif; letter-spacing: .12em; color: var(--rose); }
+    .caption-note { text-align: center; max-width: 600px; margin: 35px auto 0; color: var(--muted); font: 18px 'Caveat', cursive; line-height: 1.6; }
+    .wishes { background: #eadfd1; text-align: center; }
+    .wish-list { max-width: 760px; margin: 45px auto 0; display: grid; gap: 13px; text-align: left; }
+    .wish-card { display: flex; gap: 18px; padding: 23px 25px; background: #f7f0e7; border: 1px solid #e3d3c1; }
+    .wish-icon { font-size: 25px; color: var(--rose); padding-top: 2px; }
+    .wish-card h3 { font: 21px 'Playfair Display', Georgia, serif; font-weight: 400; margin: 0 0 8px; }
+    .wish-card p { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0; }
+    .letter-section { background: #f0e6d9; }
+    .letter-section > .eyebrow { text-align: center; margin-bottom: 34px; }
+    .letter-paper { max-width: 760px; margin: auto; position: relative; padding: clamp(30px, 7vw, 70px); background: #fffaf1; box-shadow: 0 15px 35px #5c402013; border: 1px solid #e7d9c6; background-image: repeating-linear-gradient(transparent, transparent 31px, #e8dccc 32px); }
+    .letter-tape { position: absolute; width: 100px; height: 25px; background: #d9b6a58c; top: -11px; left: calc(50% - 50px); transform: rotate(-2deg); }
+    .letter-date { text-align: right; color: #a88a76; font: 17px 'Caveat', cursive; margin: 0 0 28px; }
+    .letter-paper h2 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 25px; }
+    .letter-paper h2 span { color: var(--rose); }
+    .letter-body p { font: 17px/1.95 'Caveat', cursive; color: #5e4a3d; margin: 0 0 17px; }
+    .letter-signoff { padding-top: 8px; }
+    .letter-signoff span { color: #907865; }
+    .letter-signoff strong { font-size: 24px; font-weight: 500; color: var(--rose); display: block; margin-top: 4px; }
+    .letter-flower { position: absolute; bottom: 22px; right: 25px; color: #c48d83; font-size: 32px; opacity: .7; }
+    .letter-edit-note { max-width: 650px; text-align: center; color: var(--muted); margin: 25px auto 0; font-size: 11px; line-height: 1.7; }
+    .finale { text-align: center; padding-top: 110px; padding-bottom: 100px; }
+    .finale-flower { color: var(--rose); font-size: 36px; margin-bottom: 25px; }
+    .finale h2 { margin-bottom: 22px; }
+    .final-signature { margin-top: 35px; font: 24px 'Caveat', cursive; line-height: 1.5; }
+    .final-signature span { color: var(--rose); }
+    .text-button { border: 0; background: transparent; color: var(--rose); font: 11px 'DM Sans', sans-serif; letter-spacing: .08em; margin-top: 30px; padding: 10px; cursor: pointer; }
+    footer { border-top: 1px solid var(--line); font-size: 8px; }
+    .music-toggle { position: fixed; z-index: 30; right: 17px; bottom: 17px; display: flex; align-items: center; gap: 9px; border: 1px solid #d6c3ae; border-radius: 99px; background: #fffaf0ee; color: var(--ink); padding: 11px 14px; box-shadow: 0 5px 20px #49372f13; font: 11px 'DM Sans', sans-serif; cursor: pointer; backdrop-filter: blur(8px); }
+    .music-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rose); }
+    .music-toggle.playing .music-dot { animation: pulse 1s infinite; }
+    .music-symbol { font-size: 16px; color: var(--rose); }
+    .toast { position: fixed; z-index: 40; left: 50%; bottom: 76px; transform: translate(-50%, 12px); background: var(--ink); color: #fffaf3; padding: 12px 16px; font-size: 11px; opacity: 0; pointer-events: none; transition: .25s; max-width: calc(100% - 32px); text-align: center; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 #a95f6244; } 50% { box-shadow: 0 0 0 6px #a95f6200; } }
+    @media (max-width: 760px) {
+      .page-section { padding: 76px 20px; }
+      .hero { min-height: 78vh; padding-left: 18px; padding-right: 18px; }
+      .hero-stamp { width: 62px; height: 62px; bottom: 6%; right: 7%; }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 22px 16px; }
+      .polaroid { padding: 7px 7px 12px; }
+      figcaption { font-size: 15px; gap: 6px; }
+      .wish-card { padding: 18px 16px; gap: 12px; }
+      .wish-card h3 { font-size: 19px; }
+      .letter-paper { padding: 38px 25px 45px; }
+      .letter-body p { font-size: 18px; line-height: 1.85; }
+      .letter-flower { bottom: 10px; right: 13px; }
+      .topline { font-size: 8px; padding: 15px 17px; }
+      footer { padding: 17px; font-size: 7px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ========================================= */
+    /* CSS TAMBAHAN UNTUK STRUKTUR BARU & EFEK   */
+    /* ========================================= */
+    
+    /* Efek Hati Berjatuhan / Floating Particles */
+    .floating-particle {
+      position: fixed;
+      bottom: -50px;
+      z-index: 5;
+      pointer-events: none;
+      user-select: none;
+      animation: floatUp linear forwards;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Box Pengantar di Hero */
+    .intro-box {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--rose-light);
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      backdrop-filter: blur(4px);
+    }
+    .intro-box p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin: 0;
+    }
+    .intro-box p.highlight {
+      color: var(--rose);
+      font-style: italic;
+      margin-top: 12px;
+      font-weight: 500;
+    }
+
+    /* Layout untuk Section The Journey */
+    .journey-row {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 60px;
+      align-items: center;
+      text-align: left;
+    }
+    .journey-text-block {
+      flex: 1;
+    }
+    .journey-text-block p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--muted);
+      margin: 0;
+    }
+    .journey-img-block {
+      flex: 1;
+      width: 100%;
+    }
+    .journey-placeholder {
+      aspect-ratio: 4/3;
+      background: #e9ddce;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      color: #a28a76;
+      border: 1px dashed #d9c8b5;
+    }
+    @media (min-width: 768px) {
+      .journey-row {
+        flex-direction: row;
+        gap: 60px;
+      }
+      .journey-row:nth-child(even) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    /* Visual Spacing untuk Pesan Utama */
+    .emotional-highlight {
+      padding: 120px 20px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 800px;
+    }
+    .emotional-highlight h2 {
+      font-size: clamp(28px, 6vw, 48px);
+      line-height: 1.3;
+      color: var(--rose);
+      margin: 0;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Overlay Texture -->
+  <div class="grain"></div>
+
+  <!-- 
+    AUDIO ELEMENT
+    Lagu diset untuk "Die For You" by The Weeknd
+    (Ganti src di bawah dengan URL file audio asli jika sudah siap dideploy)
+  -->
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112135.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Topline Header -->
+  <header class="topline">
+    <div>FOR YOU</div>
+    <div><span class="tiny-heart">♥</span></div>
+    <div>EDISI SPESIAL</div>
+  </header>
+
+  <!-- Section 1 - Hero / Opening -->
+  <section class="hero page-section" id="hero">
+    
+    <div class="eyebrow reveal">OCTOBER 20 · A LITTLE GIFT FOR YOU</div>
+    <h1 class="reveal" style="transition-delay: 0.1s;">Dari dulu, masih kamu.</h1>
+    <p class="hero-copy reveal" style="transition-delay: 0.2s;">Different days, different places, still the same feeling.</p>
+    
+    <div class="intro-box reveal" style="transition-delay: 0.3s;">
+      <p>Happy Birthday, Bub. Aku punya sedikit sesuatu buat kamu. Sebelum kamu lanjut, aku mau ajak kamu lihat sesuatu. Tentang dua orang yang mungkin nggak sadar kalau ternyata sudah punya banyak sekali cerita bersama.</p>
+      <p class="highlight">Scroll pelan-pelan ya, bub. This one's for you. 💖</p>
+    </div>
+    
+    <a href="#throwback" class="primary-button reveal" style="transition-delay: 0.4s;">
+      Open your little surprise <span>♡</span>
+    </a>
+  </section>
+
+  <!-- Section 2 - Throwback -->
+  <section id="throwback" class="intro page-section reveal">
+    <div class="section-heading">
+      <div class="eyebrow">CHAPTER 01 - THE BEGINNING</div>
+      <h2>Lihat kita yang dulu.</h2>
+    </div>
+    
+    <p class="body-copy" style="margin-bottom: 50px;">
+      Bub, lihat foto-foto ini deh. Wkwk. Rasanya lucu kalau ingat kita yang dulu, dengan cerita yang masih sedikit, tapi ternyata perjalanan kita bisa sampai sejauh ini.<br><br>
+      Kalau dipikir-pikir, banyak juga ya yang sudah kita lewati. Ada momen yang mungkin sekarang bikin kita ketawa sendiri kalau diingat, ada juga kenangan yang rasanya masih jelas banget di kepala aku.
+    </p>
+
+    <!-- Photo Grid Bergaya Polaroid -->
+    <div class="memories">
+      <div class="photo-grid">
+        <figure class="polaroid tilt-left">
+          <div class="photo-frame placeholder">
+            <div class="photo-placeholder"><b>📷</b><span>Foto 1</span></div>
+          </div>
+        </figure>
+        <figure class="polaroid tilt-right">
+          <div class="photo-frame placeholder">
+            <div class="photo-placeholder"><b>📷</b><span>Foto 2</span></div>
+          </div>
+        </figure>
+        <figure class="polaroid tilt-left">
+          <div class="photo-frame placeholder">
+            <div class="photo-placeholder"><b>📷</b><span>Foto 3</span></div>
+          </div>
+        </figure>
+        <figure class="polaroid tilt-right">
+          <div class="photo-frame placeholder">
+            <div class="photo-placeholder"><b>📷</b><span>Foto 4</span></div>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 - The Journey -->
+  <section id="journey" class="page-section memories">
+    
+    <!-- Blok 1 -->
+    <div class="journey-row reveal">
+      <div class="journey-img-block">
+        <div class="journey-placeholder">[Foto Momen Sederhana / Jalan Bareng]</div>
+      </div>
+      <div class="journey-text-block">
+        <p>Banyak cerita yang sudah kita punya. Dari ketawa karena hal-hal receh, jalan bareng, sampai momen-momen sederhana yang mungkin kelihatannya biasa saja buat orang lain, tapi punya tempat tersendiri buat aku.</p>
+      </div>
+    </div>
+
+    <!-- Blok 2 -->
+    <div class="journey-row reveal">
+      <div class="journey-img-block">
+        <div class="journey-placeholder">[Foto Saat LDR / Video Call]</div>
+      </div>
+      <div class="journey-text-block">
+        <p>Terus ada masa kita harus berjauhan. Waktu keadaan mengharuskan kita menjalani LDR antara Bali dan Manado, banyak hal yang berubah. Nggak bisa ketemu kapan saja, nggak bisa selalu ada di tempat yang sama, dan kadang cuma bisa saling menemani lewat telepon.<br><br>
+        Tapi di tengah semua itu, kamu tetap jadi seseorang yang aku tunggu buat diajak cerita tentang hari aku.</p>
+      </div>
+    </div>
+
+    <!-- Blok 3 -->
+    <div class="journey-row reveal">
+      <div class="journey-img-block">
+        <div class="journey-placeholder">[Foto Liburan Bunaken]</div>
+      </div>
+      <div class="journey-text-block">
+        <p>Sampai akhirnya kita punya cerita baru lagi. Ada perjalanan, tempat-tempat baru, dan momen ketika akhirnya kita bisa menghabiskan waktu bersama lagi. Salah satunya waktu kita liburan dan snorkeling di Bunaken kemarin, dengan semua kenangan yang kita bawa pulang dari sana.<br><br>
+        Kalau suatu saat kita melihat kembali foto-foto ini, aku harap kita masih bisa tersenyum mengingat betapa serunya hari-hari itu.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Section 4 - Pesan Utama -->
+  <section id="pesan-utama" class="page-section intro" style="background: var(--paper);">
+    <div class="memories" style="max-width: 800px;">
+      
+      <div class="section-heading reveal">
+        <div class="eyebrow">A LITTLE THING I WANT YOU TO KNOW</div>
+        <h2>Kalau kamu tanya, apa yang berubah?</h2>
+      </div>
+
+      <p class="body-copy reveal" style="text-align: left; max-width: 100%;">
+        Banyak hal sudah berubah sejak foto-foto lama itu diambil, bub. Kita bertambah umur, punya kesibukan masing-masing, punya mimpi yang ingin dikejar, dan sekarang juga punya banyak hal yang harus dipikirkan tentang kehidupan kita.<br><br>
+        Tapi ada satu hal yang pengen kamu tahu.
+      </p>
+
+      <!-- Titik Emosional Visual Kuat -->
+      <div class="emotional-highlight reveal">
+        <h2>"Dari dulu sampai sekarang, perasaan aku ke kamu masih sama."</h2>
+      </div>
+
+      <p class="body-copy reveal" style="text-align: left; max-width: 100%;">
+        Mau waktu itu kita bisa ketemu dengan mudah, atau sekarang harus menunggu waktu yang pas karena jarak, kamu tetap jadi orang yang sama-sama aku senangi untuk diajak berbagi cerita.<br><br>
+        Aku masih senang mendengar cerita kamu, masih senang melihat kamu bahagia, dan masih berharap banyak hal baik datang ke hidup kamu.<br><br>
+        Aku nggak tahu kamu sadar atau nggak, tapi aku bersyukur bisa mengenal kamu sejauh ini. Jadi kalau hari ini kamu melihat kembali foto-foto kita, aku harap kamu tahu bahwa setiap foto itu punya cerita buat aku. Dan aku senang karena kamu ada di dalam banyak cerita itu. 💖
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Section 5 - Birthday Letter -->
+  <section id="letter" class="letter-section page-section reveal">
+    <div class="letter-paper">
+      <div class="letter-tape"></div>
+      
+      <h2>Happy birthday, <span>Bub. 💖</span></h2>
+      
+      <div class="letter-body">
+        <p>Selamat bertambah umur yaaa.</p>
+        
+        <p>Semoga di umur yang baru ini kamu selalu sehat, bahagia, dilancarkan semua urusannya, dan satu per satu hal yang kamu impikan bisa tercapai. Semoga kamu juga selalu punya kekuatan buat menjalani hari-hari yang berat, dan nggak lupa menikmati hal-hal kecil yang bikin kamu bahagia.</p>
+        
+        <p>Aku berharap kamu bisa terus tumbuh menjadi orang yang kamu inginkan. Jangan terlalu keras sama diri sendiri kalau ada sesuatu yang nggak berjalan sesuai rencana. Kamu nggak harus selalu punya semua jawabannya sekarang. Pelan-pelan aja, yang penting kamu tetap berusaha dan jangan lupa jaga diri sendiri.</p>
+        
+        <p>Oh iya, semoga dengan sepatu barunya kamu jadi makin rajin olahraga ya, wkwkwk. Jangan cuma semangat di awal, nanti malah jadi pajangan di kamar. Aku pengen kamu tetap sehat supaya bisa melakukan banyak hal seru dan pergi ke lebih banyak tempat yang kamu mau. 😂❤️</p>
+        
+        <p>Makasih ya, Bub, sudah menjadi bagian dari hidup aku dan memberikan begitu banyak cerita selama ini. Aku senang bisa mengenal kamu, belajar banyak hal bareng kamu, dan punya kenangan yang suatu hari nanti bisa kita lihat kembali sambil ketawa sendiri.</p>
+        
+        <p>Di hari ulang tahunmu ini, aku cuma ingin kamu tahu kalau aku selalu mendoakan hal-hal baik buat kamu. Bukan cuma hari ini, tapi juga di hari-hari biasa ketika kamu sedang sibuk, capek, atau mungkin lagi nggak punya alasan untuk tersenyum.</p>
+        
+        <p>Semoga tahun ini baik sama kamu. Semoga banyak hal yang bikin kamu bahagia, banyak mimpi yang mulai terwujud, dan banyak momen yang membuat kamu merasa bahwa semua usaha kamu selama ini nggak sia-sia.</p>
+        
+        <p>Happy birthday, Ditya.</p>
+        <p>Enjoy your day, bub. You deserve so many good things in life. 💖</p>
+      </div>
+      
+      <div class="letter-signoff">
+        <span>Love,</span>
+        <strong>Apit</strong>
+      </div>
+      
+      <div class="letter-flower">🌹</div>
+    </div>
+  </section>
+
+  <!-- Section 6 - Closing -->
+  <section id="closing" class="finale page-section reveal">
+    <h2>One more thing, bub.</h2>
+    <p class="body-copy" style="margin-bottom: 30px;">
+      Kalau nanti kamu sudah selesai melihat semuanya, jangan lupa senyum yaa.<br>
+      Aku cuma pengen hari ini kamu merasa disayang, dirayakan, dan tahu bahwa kehadiranmu berarti buat seseorang.
+    </p>
+    
+    <div class="final-signature">
+      Happy birthday sekali lagi, Ditya. <span>💖</span>
+    </div>
+    
+    <div style="margin-top: 50px; font-family: 'Caveat', cursive; color: var(--muted); font-size: 20px;">
+      From Apit, with love. ♡
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>DIBUAT DENGAN ❤️</div>
+    <div>HANYA UNTUKMU</div>
+  </footer>
+
+  <!-- Toggle Musik (Pojok Kanan Bawah) -->
+  <button class="music-toggle" id="musicToggle">
+    <div class="music-dot"></div>
+    <span>Play Song</span>
+    <span class="music-symbol">🎵</span>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      /* --- 1. Intersection Observer untuk Animasi Muncul --- */
+      const reveals = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      reveals.forEach(reveal => revealObserver.observe(reveal));
+
+      /* --- 2. Kontrol Pemutar Musik --- */
+      const musicBtn = document.getElementById("musicToggle");
+      const audio = document.getElementById("bg-music");
+      const musicText = musicBtn.querySelector("span");
+      let isPlaying = false;
+
+      musicBtn.addEventListener("click", () => {
+        if (isPlaying) {
+          audio.pause();
+          musicBtn.classList.remove("playing");
+          musicText.textContent = "Play Song";
+        } else {
+          audio.play().catch(err => console.log("Audio play di-block oleh browser:", err));
+          musicBtn.classList.add("playing");
+          musicText.textContent = "Pause";
+        }
+        isPlaying = !isPlaying;
+      });
+
+      /* --- 3. Efek Hati/Kelopak Bunga Berjatuhan --- */
+      const particles = ["💖", "🌸", "✨", "🤍"];
+      
+      function createParticle() {
+        const particle = document.createElement("div");
+        particle.className = "floating-particle";
+        
+        // Random emoji
+        particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+        
+        // Random ukuran dan posisi mulai
+        const size = Math.random() * 12 + 12; // 12px - 24px
+        particle.style.fontSize = `${size}px`;
+        particle.style.left = `${Math.random() * 100}vw`; 
+        
+        // Random durasi mengambang ke atas
+        const duration = Math.random() * 6 + 6; // 6 - 12 detik
+        particle.style.animationDuration = `${duration}s`;
+        
+        document.body.appendChild(particle);
+        
+        // Hapus elemen setelah animasi selesai agar tidak menumpuk
+        setTimeout(() => {
+          particle.remove();
+        }, duration * 1000);
+      }
+
+      // Generate partikel baru setiap detiknya
+      setInterval(createParticle, 1000); 
+
+    });
+  </script>
+</body>
+</html>
