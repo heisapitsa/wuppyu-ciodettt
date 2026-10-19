@@ -110,6 +110,9 @@
       .letter-flower { bottom: 10px; right: 13px; }
       .topline { font-size: 8px; padding: 15px 17px; }
       footer { padding: 17px; font-size: 7px; }
+
+      /* Mobile safety: konten tetap terlihat meskipun animasi reveal gagal berjalan. */
+      .reveal, .reveal.visible { opacity: 1; transform: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -257,7 +260,7 @@
   </section>
 
   <!-- Section 2 - Throwback -->
-  <section id="throwback" class="intro page-section reveal">
+  <section id="throwback" class="intro page-section">
     <div class="section-heading">
       <div class="eyebrow">CHAPTER 01 - THE BEGINNING</div>
       <h2>Lihat kita yang dulu.</h2>
@@ -293,6 +296,7 @@
         </figure>
       </div>
     </div>
+  </section>
 
   <!-- Section 3 - The Journey -->
   <section id="journey" class="page-section memories">
